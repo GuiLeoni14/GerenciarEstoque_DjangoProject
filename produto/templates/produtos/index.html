@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Estoque{%  endblock %}
+
+{% block content %}
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>PRODUTOS<i class="fas fa-hand-holding-usd"></i></h1>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <a href="/form" class="btn btn-success" id="btn-success">Adicionar</a>
+    </div>
+
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <form method="get">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar livro:">
+        </form>
+    </div>
+        <div class="col-8 m-auto pt-2 pb-2 filter-div">
+            <span id="filtrar-por" class="col-2">Filtrar por:</span>
+            <select name="filter_livro" id="filter_livro" class="form-control">
+                <option value="">Escolha uma opção:</option>
+                <option value="didatico">Didáticos</option>
+                <option value="manual">Manual do Professor</option>
+                <option value="literatura">Literatura</option>
+            </select>
+            <select name="filter-alfabetica" id="filterAlf_livro" class="form-control">
+                <option value="">Ordenar por:</option>
+                <option value="crescente">A-Z</option>
+                <option value="decrescente">Z-A</option>
+                <option value="recentes">Recentes</option>
+                <option value="antigos">Antigos</option>
+            </select>
+            <form method="GET" id="form-buscar-data">
+                <input type="text" id="buscar_data" name="buscar_data" placeholder="Buscar por ano: ">
+            </form>
+            <a href="/" class="btn btn-warning" name="recarregar" id="recarregar"><i class="fas fa-undo"></i></a>
+        </div>
+    <div class="col-8 m-auto pt-2 pb-2 text-center" >
+        <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr id="cabecalho">
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Data/Aquisição</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for dbs in db %}
+              <tr id="items">
+                <th>{{dbs.id}}</th>
+                <td>{{dbs.nome}}</td>
+                <td>{{dbs.tipo}}</td>
+                <td>{{dbs.data}}</td>
+                <td>{{dbs.quantidade}}</td>
+                <td id="td">
+                    <a href="/view/{{dbs.id}}/" class="btn btn-dark" >Visualizar</a>
+                    <a href="/edit/{{dbs.id}}/" class="btn btn-primary" >Editar</a>
+                    <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel" >Deletar</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <p>
+            <a href="/table" class="btn btn-info" id="gerar-pdf">GERAR PDF</a>
+            <a href="/emprestimo" class="btn btn-warning">VENDAS</a>
+            <a class="btn btn-primary" href="/accounts/logout" role="button" id="sair"><i class="fas fa-sign-in-alt"></i></a>
+        </p>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if db.has_previous %}
+                <a href="{{request.get_full_path}}&page={{db.previous_page_number}}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+
+            {% if db.paginator.num_pages %}
+            <span class="current">
+                {{ db.number }} de {{ db.paginator.num_pages }}
+            </span>
+            {% endif %}
+            {% if db.has_next %}
+                <a href="{{request.get_full_path}}&page={{db.next_page_number}}" name="b" id="b"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

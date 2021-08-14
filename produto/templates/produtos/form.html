@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Produtos{%  endblock %}
+
+{% block content%}
+    <div class="col-6 m-auto pt-2 pb-2 text-center">
+        {% if db%}
+            <h1>Edição do {{db.nome}}</h1>
+        {% else %}
+            <h1>Cadastro</h1>
+        {% endif %}        
+    </div>
+    {% if db %}
+        <div class="col-6 pt-2 pb-2 text-center" id="div-edicao">
+            <h3 id="edicao">Ultima edição: {{db.editado_em}}</h3>
+        </div>
+    {% endif %}
+    <div class="col-8 pb-5 text-center" id="form-items">
+        <div id="result">
+            <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+                {% csrf_token %}
+                <br>
+                <h3>Preencha os atributos: </h3>
+                <div class="row">
+                    <div class="col-4 p-2 text-end">
+                        Nome do Produto:
+                    </div>
+                    <div class="col-8 p-2 text-start">
+                        {{form.nome}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-2 text-end">
+                        Descrição:
+                    </div>
+                    <div class="col-8 p-2 text-start">
+                        {{form.descricao}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-2 text-end">
+                        Tipo do Produto:
+                    </div>
+                    <div class="col-8 p-2 text-start">
+                        {{form.tipo}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-2 text-end">
+                        Fornecedor:
+                    </div>
+                    <div class="col-8 p-2 text-start">
+                        {{form.fornecedor}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-2 text-end">
+                        Quantidade:
+                    </div>
+                    <div class="col-8 p-2 text-start">
+                        {{form.quantidade}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-2 text-end">
+                        Data Aquisição:
+                    </div>
+                    <div class="col-8 p-2 text-start">
+                        {{form.data}}
+                    </div>
+                </div>           
+                <div class="p-2">
+                    <a href="/" class="btn btn-info mt-4">Voltar</a>
+                    <input type="submit" class="btn btn-success mt-4" id="salvar" value="Salvar">
+                </div>
+            </form>
+        </div> 
+    </div>
+{% endblock %}
