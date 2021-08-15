@@ -33,3 +33,18 @@ $(document).ready(function(){
        window.location.href = baseUrl + '?filterAlf=' + filterAlf;
     });
 });
+
+/*
+$(document).ready(function(){ //cuaso queria mudar é só tirar o '{{request.get_full_path}}&'
+    const b = document.querySelector(".page_next");
+    const bpro = document.querySelector(".page_next");
+    var base = window.location.href
+    var baseUrl = window.location.origin + '/?page=2'
+    console.log(base);
+
+    if ((base === 'http://localhost:8000/') || (base === 'http://192.168.0.189:8000/')){
+        b.href = baseUrl
+        b.pro
+        console.log('funcionou');
+    }    
+});*/

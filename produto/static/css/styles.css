@@ -2,9 +2,6 @@
       background-color: #FFE4E1;
       background-image: url('../img/background.jpg');
   }
-  .pagination{
-      margin-bottom: 20px;
-  }
   .step-links{
       position: relative;
       margin-left: auto;
@@ -73,6 +70,17 @@
   #recarregar:hover {
       transform: scale(1.1);
       transition: all 0.5s;
+  }
+
+  .total-div{
+    border: #0D0D0D solid;
+    background: #fff;  
+  }
+  #total{
+    margin: auto;
+    margin-left: 10px;
+    color: #0D0D0D;
+    font-size: 17px;
   }
 /* FORM */
 
@@ -321,4 +329,51 @@ text-align: left;
     transition: background 1s, color 1s;
     background: #00FF7F;
     color: #0D0D0D;
+  }
+
+  .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center
+
+  }
+
+  .pagination ul li{
+    padding: 0%;
+  }
+
+  /* PAGINAÇÃO */
+
+  .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #0D0D0D;
+    border-color: #363636;
+  }
+  .page-item.active .page-link:hover{
+    background: #363636;
+    color: #F2F2F2;
+  }
+  nav ul li #proximo, #anterior{
+    background: #F2F2F2;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+
+  nav ul li #proximo:hover{
+    color: #F2F2F2;
+    background: #363636;
+  }
+  nav ul li #anterior:hover{
+    color: #F2F2F2;
+    background: #363636;
+  }
+
+  #num{
+    color: #0D0D0D;
+    border: 1px solid #000000;
+  }
+  #num:hover{
+    background: #bdb8b8;
+    border: 1px solid #000000; 
   }
