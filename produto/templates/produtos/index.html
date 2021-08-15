@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="col-8 m-auto pt-2 pb-2 text-center">
-        <h1>PRODUTOS<i class="fas fa-hand-holding-usd"></i></h1>
+        <h1><i class="far fa-hand-point-right"></i>PRODUTOS<i class="fas fa-hand-holding-usd"></i></h1>
     </div>
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
@@ -13,18 +13,18 @@
 
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <form method="get">
-            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar livro:">
+            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar produto:">
         </form>
     </div>
         <div class="col-8 m-auto pt-2 pb-2 filter-div">
             <span id="filtrar-por" class="col-2">Filtrar por:</span>
-            <select name="filter_livro" id="filter_livro" class="form-control">
+            <select name="filter" id="filter" class="form-control">
                 <option value="">Escolha uma opção:</option>
-                <option value="didatico">Didáticos</option>
-                <option value="manual">Manual do Professor</option>
-                <option value="literatura">Literatura</option>
+                <option value="cos">Cométicos</option>
+                <option value="alim">Alimentício</option>
+                <option value="indu">Industrial</option>
             </select>
-            <select name="filter-alfabetica" id="filterAlf_livro" class="form-control">
+            <select name="filter-alfabetica" id="filterAlf" class="form-control">
                 <option value="">Ordenar por:</option>
                 <option value="crescente">A-Z</option>
                 <option value="decrescente">Z-A</option>
@@ -59,7 +59,7 @@
                 <td id="td">
                     <a href="/view/{{dbs.id}}/" class="btn btn-dark" >Visualizar</a>
                     <a href="/edit/{{dbs.id}}/" class="btn btn-primary" >Editar</a>
-                    <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel" >Deletar</a>
+                    <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
                 </td>
               </tr>
             {% endfor %}

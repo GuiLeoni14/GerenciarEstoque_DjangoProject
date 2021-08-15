@@ -22,10 +22,10 @@
       <nav>
         <p class="brand"><a href="/" class="brand" style="text-decoration: none;">your<strong>products</strong></a></p>
         <ul>
-          <li><a href="#catalog">Catalog</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#feature">Features</a></li>
-          <button>Sair</button>
+          <li><a href="#catalog">Relatório</a></li>          
+          <li><a href="#feature">Funcionalidades</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <a href="/" style="text-decoration: none;"><button>Sair</button></a>
         </ul>
       </nav>
     </div> 
@@ -36,18 +36,18 @@
       <div class="main">
         <div class="content footer-links">
           <div class="footer-company">
-            <h4>Company</h4>
-            <h6>About</h6>
-            <h6>Contact</h6>
+            <h4>Suporte</h4>
+            <a href="https://api.whatsapp.com/send?phone=5535999979041&text=Oii%2C%20adorei%20seu%20site!%20Tenho%20algumas%20d%C3%BAvidas%2C%20pode%20me%20ajudar%3F" style="text-decoration: none;" target="_blank"><h6>Chat</h6></a>
+            <a href="/" style="text-decoration: none;"><h6>Email</h6></a>
           </div>
           <div class="footer-rental">
-            <h4>Rental</h4>
-            <h6>Self-Drive</h6>
-            <h6>Chauffer-Driven</h6>
-            <h6>Help</h6>
+            <h4>Início</h4>
+            <a href="/" style="text-decoration: none;"><h6>Home</h6></a>
+            <a href="/form" style="text-decoration: none;"><h6>Adicionar</h6></a>
+            <a href="/table" style="text-decoration: none;"><h6>PDF</h6></a>
           </div>
           <div class="footer-social">
-            <h4>Stay connected</h4>
+            <h4>Redes Sociais</h4>
             <div class="social-icons">
               <a href="https://www.instagram.com/gui_leoni14/" target="_blank"><img src="../../static/img/instagram.png" alt="Instagram" /></a>
               <a href="https://api.whatsapp.com/send?phone=5535999979041&text=Oii%2C%20adorei%20seu%20site!%20Podemos%20conversar%3F" target="_blank"><img src="../../static/img/whatsapp.png" alt="whatsapp" id="whatsapp-img"/></a>
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="footer-contact">
-            <h4>Contact US</h4>
+            <h4>Contate-nos</h4>
             <h6>+55 35 99997-9041</h6>
             <h6>guileone167@gmail.com</h6>
             <h6>Guaipava, Paraguaçu-MG</h6>
@@ -63,10 +63,11 @@
         </div>
       </div>
       <div class="last">
-        <h6>Guilherme Leoni 2021 - Use like you want</h6>
+        <h6>Guilherme Leoni 2021 - Seja bem-vindo! Sinta-se em casa...</h6>
       </div>
     </footer>
     </div>
+    <script src="{% static 'js/scripts.js' %}"></script>
     <script language="JavaScript" type="text/javascript">
       function funcao_pdf() {
           var pegar_dados=document.getElementById('dados').innerHTML;
@@ -80,10 +81,5 @@
           janela.print();
       }
   </script>
-    <script
-    src="https://code.jquery.com/jquery-3.4.0.min.js"
-    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-    crossorigin="anonymous"></script>
-    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

@@ -21,13 +21,7 @@
   #td{
       white-space: nowrap;
   }
-  #btn-success{
-      transition: background 0.5s;
-  }
-  #btn-success:hover{
-      background: #32CD32;
-      border-color: #fff;
-  }
+
   #sair{
       transition: transform 0.3s;
   }
@@ -47,14 +41,14 @@
 
   }
 
-  #filter_livro {
+  #filter {
       display: inline-block;
       width: 200px;
       margin-left: 10px;
       margin-bottom: 15px;
       border: 2px solid #4F5059;
   }
-  #filterAlf_livro{
+  #filterAlf{
       width: 200px;
       border: 2px solid #4F5059;
       display: inline-block
@@ -172,6 +166,8 @@ text-align: left;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto; 
   }
   
   .footer-company,
@@ -195,7 +191,7 @@ text-align: left;
   }
   
   .main .footer-social img {
-    margin-left: 20px;
+    margin-left: 10px;
     width: 32px;
     height: 32px;
   }
@@ -208,6 +204,7 @@ text-align: left;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid #0D0D0D;
   }
  
   footer .last h6{
@@ -251,6 +248,7 @@ text-align: left;
     cursor: pointer;
   }
 
+
   nav ul {
     display: flex;
     flex-direction: row;
@@ -272,7 +270,8 @@ text-align: left;
     color: #F2F2F2;
   }
 
-  nav ul button {
+  nav ul button{
+    transition: background 1s;
     border: 1px solid #F2F2F2;
     background: transparent;
     padding: 8px 40px;
@@ -288,7 +287,9 @@ text-align: left;
     background: #000000;
     color: rgb(255, 255, 255);
   }
-
+  nav p a, strong{
+    transition: color 0.5s;
+  }
   nav p a:hover{
     transition: color 0.5s;
     color: #F2F2F2;
@@ -312,4 +313,12 @@ text-align: left;
     transform: translateY(-0.5rem);
     background:	#0D0D0D;
     color: #FFF;
+  }
+  #btn-success{
+    transition: background 1s;
+  }
+  #btn-success:hover{
+    transition: background 1s, color 1s;
+    background: #00FF7F;
+    color: #0D0D0D;
   }

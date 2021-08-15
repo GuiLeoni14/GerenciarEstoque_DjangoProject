@@ -2,13 +2,67 @@ from produto.models import produto
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from produto.forms import produtoForm
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 
 def home(request):
     data = {}
-    data['db'] = produto.objects.all()
+    filter = request.GET.get('filter')
+    filterAlf = request.GET.get('filterAlf')
+    buscar_data = request.GET.get("buscar_data")
+    search = request.GET.get('search')
+    
+    if search:
+        data['db'] = produto.objects.filter(nome__icontains=search)
+        paginator = Paginator(data['db'], 1)
+        page = request.GET.get('page')
+        data['db'] = paginator.get_page(page)
+
+    elif filter:
+        data['db'] = produto.objects.filter(tipo__icontains=filter)
+        paginator = Paginator(data['db'], 10)
+        page = request.GET.get('page')
+        data['db'] = paginator.get_page(page)
+    elif filterAlf:
+
+        if filterAlf == 'crescente':
+            data["db"] = produto.objects.all().order_by('nome', '-criado_em')
+            paginator = Paginator(data['db'], 10)
+            page = request.GET.get('page')
+            data['db'] = paginator.get_page(page)
+
+        elif filterAlf == 'recentes':
+            data["db"] = produto.objects.all().order_by('-data', '-criado_em')
+            paginator = Paginator(data['db'], 10)
+            page = request.GET.get('page')
+            data['db'] = paginator.get_page(page)
+
+        elif filterAlf == 'antigos':
+            data["db"] = produto.objects.all().order_by('data', '-criado_em')
+            paginator = Paginator(data['db'], 10)
+            page = request.GET.get('page')
+            data['db'] = paginator.get_page(page)
+
+        else:
+            data["db"] = produto.objects.all().order_by('-nome', '-criado_em')
+            paginator = Paginator(data['db'], 10)
+            page = request.GET.get('page')
+            data['db'] = paginator.get_page(page)
+
+    elif buscar_data:
+        data["db"] = produto.objects.filter(data__icontains=buscar_data)
+        paginator = Paginator(data['db'], 10)
+        page = request.GET.get('page')
+        data['db'] = paginator.get_page(page)
+
+    else:
+        data['db'] = produto.objects.all()
+        paginator = Paginator(data['db'], 10)
+        page = request.GET.get('page')
+        data['db'] = paginator.get_page(page)
+
     return render(request, 'produtos/index.html', data)
 
 
@@ -55,3 +109,4 @@ def table(request):
     data = {}
     data['db'] = produto.objects.all()
     return render(request, 'produtos/table.html', data)
+   
