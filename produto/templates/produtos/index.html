@@ -37,7 +37,7 @@
             <a href="/" class="btn btn-warning" name="recarregar" id="recarregar"><i class="fas fa-undo"></i></a>
         </div>
     <div class="col-2 m-auto p-1 text-center total-div">
-        <h5 class="text-center" id="total">Total de registros: {{db.paginator.count}}</h5>
+        <h5 class="text-center" id="total">Total de registros: {% if db %}{{db.paginator.count}} {% else %}{{filter.paginator.count}}{% endif %} </h5>
     </div>      
     <div class="col-8 m-auto pt-2 pb-2 text-center" >
         <table class="table table-striped">
@@ -52,6 +52,7 @@
               </tr>
             </thead>
             <tbody>
+{% if db %}    
             {% for dbs in db %}
               <tr id="items">
                 <th>{{dbs.id}}</th>
@@ -112,4 +113,66 @@
             </ul>
         </nav>
     </div>
+{% else %}
+            {% for dbs in filter %}
+            <tr id="items">
+            <th>{{dbs.id}}</th>
+            <td>{{dbs.nome}}</td>
+            <td>{{dbs.tipo}}</td>
+            <td>{{dbs.data}}</td>
+            <td>{{dbs.quantidade}}</td>
+                <td id="td">
+                    <a href="/view/{{dbs.id}}/" class="btn btn-dark" >Visualizar</a>
+                    <a href="/edit/{{dbs.id}}/" class="btn btn-primary" >Editar</a>
+                    <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <p>
+            <a href="/table" class="btn btn-info" id="gerar-pdf">GERAR PDF</a>
+            <a href="/emprestimo" class="btn btn-warning">VENDAS</a>
+            <a class="btn btn-primary" href="/accounts/logout" role="button" id="sair"><i class="fas fa-sign-in-alt"></i></a>
+        </p>
+    </div>
+    <div class="pagination">
+        <nav aria-label="..." class="pagination">
+            <ul class="pagination">
+                {% if filter.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{request.get_full_path}}&page={{filter.previous_page_number}}" tabindex="-1" aria-disabled="true" id="anterior">Anterior</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                    </li>
+                {% endif%}
+
+                {% for num in filter.paginator.page_range %}
+                    {% if num == filter.number %}
+                        <li class="page-item active">
+                            <a class="page-link" href="#">{{ num }}</a>
+                        </li>
+                    {% else %}   
+                        <li class="page-item">
+                            <a class="page-link" href="{{request.get_full_path}}&page={{num}}" id="num">{{ num }}</a>
+                        </li> 
+                    {% endif %}
+                {% endfor %}
+                {% if filter.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{request.get_full_path}}&page={{filter.next_page_number}}" id="proximo">Próximo</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Próximo</a>
+                    </li>    
+                {% endif %}    
+            </ul>
+        </nav>
+    </div>
+{% endif %}
 {% endblock %}
