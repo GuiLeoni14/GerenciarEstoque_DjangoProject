@@ -122,36 +122,6 @@
       font-size: 20px;
   }
 
-/* TABELA VIEW */
-
-/* #dados table, th, td {
-border: 1px solid black;
-border-collapse: collapse;
-}
-#dados th, td {
-padding: 5px;
-text-align: left;
-}
-#dados table{
-    transform: scale(0.8);
-    background-color: #E0FFFF;
-}
-#dados td{
-    height: 70px;
-    width: 1000px;
-    font-size: 25px;
-}
-#dados th{
-    width: 300px;
-    font-size: 25px;
-    background-color: #B0E0E6;
-}
-#dados caption{
-    font-size: 40px;
-    color: #000;
-    background-color: #B0E0E6;
-} */
-
 /* Rodapé */
 
 /* Footer */
@@ -322,10 +292,10 @@ text-align: left;
     background:	#0D0D0D;
     color: #FFF;
   }
-  #btn-success{
+  .btn-success{
     transition: background 1s;
   }
-  #btn-success:hover{
+  .btn-success:hover{
     transition: background 1s, color 1s;
     background: #00FF7F;
     color: #0D0D0D;
@@ -340,6 +310,18 @@ text-align: left;
 
   .pagination ul li{
     padding: 0%;
+  }
+
+  .btn-info{
+    margin-right: 5px;
+    transition: background 0.5s;
+    background: #1b1a1a;
+    border: #fff;
+    color: #fff;
+  }
+  .btn-info:hover{
+    background: #fff;;
+    color: #1b1a1a;
   }
 
   /* PAGINAÇÃO */
@@ -377,3 +359,55 @@ text-align: left;
     background: #bdb8b8;
     border: 1px solid #000000; 
   }
+
+/* TABELA VIEW */
+
+  #dados table,
+  #dados th,
+  #dados td{
+    border: 1px solid black;
+    border-collapse: collapse; 
+  }
+
+  #dados th,
+  #dados td{
+    padding: 5px;
+    text-align: left;   
+  }
+  #dados table{
+    box-shadow: 0 10px 20px 10px;
+    transform: scale(0.8);
+    background-color: #F2F2F2;
+  }
+  #dados td{
+    height: 70px;
+    width: 1000px;
+    font-size: 25px;
+  }
+  #dados th{
+      width: 300px;
+      font-size: 25px;
+      background-color: #B8BABF;
+  }
+  #dados caption{
+    caption-side: top;
+      font-size: 40px;
+      color: #000;
+      background-color: #B8BABF;
+  }
+
+/* MODAL */
+
+ .modal-header{
+  border: 1px solid black;
+  background-image: url('../img/background.jpg');
+ }
+
+ .modal-body{
+  background-image: url('../img/background2.jpg');
+ }
+
+ .modal-footer{
+  border: 1px solid black;
+  background-image: url('../img/background.jpg');
+ }

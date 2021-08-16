@@ -3,11 +3,11 @@
 {% block title %}Gerar PDF{%  endblock %}
 
 {% block content %}
-    <div class="col-8 m-auto pt-2 pb-2 text-center">
+    <div class="col-8 m-auto mt-4 pt-2 pb-2 text-center">
         <h1><i class="fas fa-file-pdf"></i>PRODUTOS<i class="fas fa-download"></i></h1>
     </div>
     <div class="col-8 m-auto pt-2 pb-2 text-center" id="dados">
-        <table class="table" >
+        <table>
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
@@ -37,7 +37,7 @@
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <p>
             <input type="button" value="BAIXAR" class="btn btn-danger" onclick="funcao_pdf()">
-            <a href="/" class="btn btn-info">VOLTAR</a>
+            <button onclick="history.go(-1);" class="btn btn-info">Voltar</button>
         </p>
     </div>
 {% endblock %}
