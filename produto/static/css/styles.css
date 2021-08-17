@@ -398,16 +398,105 @@
 
 /* MODAL */
 
- .modal-header{
-  border: 1px solid black;
-  background-image: url('../img/background.jpg');
- }
+  .modal-header{
+    border: 1px solid black;
+    background-image: url('../img/background.jpg');
+  }
 
- .modal-body{
-  background-image: url('../img/background2.jpg');
- }
+  .modal-body{
+    margin-top: 0%;
+    background-image: url('../img/background3.jpg');
+    border: 1px solid black;
+  }
 
- .modal-footer{
-  border: 1px solid black;
-  background-image: url('../img/background.jpg');
- }
+  .modal-footer{
+    border: 1px solid black;
+    background-image: url('../img/background.jpg');
+  }
+
+  #last_pro{
+    text-align: center;
+    background: #363636;
+    color: #fff;
+    padding: auto;
+    margin-bottom: 0%;
+  }
+
+  /* TABELA DO MODAL */
+
+  #table-modal{
+    margin: auto;
+  }
+
+  #table-modal td,
+  #table-modal th{
+    border: 1px solid black;
+    font-size: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+  }
+
+  #table-modal th{
+    text-align: center;
+    background: #B8BABF;
+  }
+  
+  #table-modal td{
+    background: #F2F2F2;
+  }
+
+  #tr-cabecalho th{
+    background: #7e7b7b;
+    color: #0D0D0D;
+  }
+
+  .div-img-if{
+    display: flex;
+  }
+
+  #img-if{
+    margin-left: 10px;
+    width: 220px;
+    height: 220px;
+    margin-top: 50px;
+  }
+
+  .modal-body p{
+    float: left;
+  }
+
+  .div-img-if h4{
+    text-align: center;
+    background: #b3aeae;
+    font-size: 22px;
+  }
+
+  #img-django{
+    float: right;
+    width: 220px;
+    height: 220px;
+    float: right; 
+    margin: 8px;
+  }
+
+  .div-img-django h4{
+    text-align: center;
+    background: #b3aeae;
+    font-size: 22px;
+  }
+
+  .div-django-p{
+    text-align: justify;
+  }
+
+  .funcionalidade-p{
+    text-align: justify;
+
+  }
+  .funcionalidade-p p{
+    background: #b3aeae;
+    padding: 20px;
+    margin: 20px;
+    margin-top: 10px;
+  }

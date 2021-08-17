@@ -58,7 +58,9 @@ def home(request):
         data['filter'] = paginator.get_page(page)
 
     else:
-        data['db'] = produto.objects.all()
+        data['db'] = produto.objects.all().order_by('-criado_em')
+        data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+        data['re'] = produto.objects.all().order_by('-editado_em')[:5]
         paginator = Paginator(data['db'], 10)
         page = request.GET.get('page')
         data['db'] = paginator.get_page(page)
