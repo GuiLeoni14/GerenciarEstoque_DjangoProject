@@ -372,28 +372,28 @@
   #dados th,
   #dados td{
     padding: 5px;
-    text-align: left;   
+    text-align: center;   
   }
   #dados table{
     box-shadow: 0 10px 20px 10px;
-    transform: scale(0.8);
+    transform: scale(1);
     background-color: #F2F2F2;
   }
   #dados td{
     height: 70px;
     width: 1000px;
-    font-size: 25px;
+    font-size: 20px;
   }
   #dados th{
       width: 300px;
-      font-size: 25px;
+      font-size: 20px;
       background-color: #B8BABF;
   }
   #dados caption{
     caption-side: top;
-      font-size: 40px;
-      color: #000;
-      background-color: #B8BABF;
+    font-size: 40px;
+    color: #000;
+    background-color: #B8BABF;
   }
 
 /* MODAL */

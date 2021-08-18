@@ -15,12 +15,16 @@ def home(request):
     search = request.GET.get('search')
     
     if search:
+        data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+        data['re'] = produto.objects.all().order_by('-editado_em')[:5]        
         data['filter'] = produto.objects.filter(nome__icontains=search)
         paginator = Paginator(data['filter'], 10)
         page = request.GET.get('page')
         data['filter'] = paginator.get_page(page)
 
     elif filter:
+        data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+        data['re'] = produto.objects.all().order_by('-editado_em')[:5]
         data['filter'] = produto.objects.filter(tipo__icontains=filter)
         paginator = Paginator(data['filter'], 10)
         page = request.GET.get('page')
@@ -28,30 +32,40 @@ def home(request):
     elif filterAlf:
 
         if filterAlf == 'crescente':
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
             data["filter"] = produto.objects.all().order_by('nome', '-criado_em')
             paginator = Paginator(data['filter'], 10)
             page = request.GET.get('page')
             data['filter'] = paginator.get_page(page)
 
         elif filterAlf == 'recentes':
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
             data["filter"] = produto.objects.all().order_by('-data', '-criado_em')
             paginator = Paginator(data['filter'], 10)
             page = request.GET.get('page')
             data['filter'] = paginator.get_page(page)
 
         elif filterAlf == 'antigos':
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
             data["filter"] = produto.objects.all().order_by('data', '-criado_em')
             paginator = Paginator(data['filter'], 10)
             page = request.GET.get('page')
             data['filter'] = paginator.get_page(page)
 
         else:
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]     
             data["filter"] = produto.objects.all().order_by('-nome', '-criado_em')
             paginator = Paginator(data['filter'], 10)
             page = request.GET.get('page')
             data['filter'] = paginator.get_page(page)
 
     elif buscar_data:
+        data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+        data['re'] = produto.objects.all().order_by('-editado_em')[:5]        
         data["filter"] = produto.objects.filter(data__icontains=buscar_data)
         paginator = Paginator(data['filter'], 10)
         page = request.GET.get('page')
@@ -70,6 +84,8 @@ def home(request):
 
 def form(request):
     data = {}
+    data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+    data['re'] = produto.objects.all().order_by('-editado_em')[:5]     
     data['form'] = produtoForm()
     return render(request, 'produtos/form.html', data)
 
@@ -82,6 +98,8 @@ def create(request):
 
 def edit(request, pk):
     data = {}
+    data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+    data['re'] = produto.objects.all().order_by('-editado_em')[:5]     
     data['db'] = produto.objects.get(pk=pk)
     data['form'] = produtoForm(instance=data['db'])
     return render(request, 'produtos/form.html', data)
@@ -103,12 +121,19 @@ def delete(request, pk):
 
 def view(request, pk):
     data = {}
+    data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+    data['re'] = produto.objects.all().order_by('-editado_em')[:5]     
     data['db'] = produto.objects.get(pk=pk)
     return render(request, 'produtos/view.html', data)
 
 
 def table(request):
     data = {}
+    data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+    data['re'] = produto.objects.all().order_by('-editado_em')[:5]    
     data['db'] = produto.objects.all()
+    paginator = Paginator(data['db'], 20)
+    page = request.GET.get('page')
+    data['db'] = paginator.get_page(page)    
     return render(request, 'produtos/table.html', data)
    

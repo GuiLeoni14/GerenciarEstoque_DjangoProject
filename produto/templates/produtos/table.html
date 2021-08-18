@@ -6,7 +6,7 @@
     <div class="col-8 m-auto mt-4 pt-2 pb-2 text-center">
         <h1><i class="fas fa-file-pdf"></i>PRODUTOS<i class="fas fa-download"></i></h1>
     </div>
-    <div class="col-8 m-auto pt-2 pb-2 text-center" id="dados">
+    <div class="col-12 m-auto pt-2 pb-2 text-center" id="dados">
         <table>
             <thead class="thead-dark">
               <tr>
@@ -33,11 +33,46 @@
             </tbody>
         </table>
     </div>
-
     <div class="col-8 m-auto pt-2 pb-2 text-center">
         <p>
             <input type="button" value="BAIXAR" class="btn btn-danger" onclick="funcao_pdf()">
             <button onclick="history.go(-1);" class="btn btn-info">Voltar</button>
         </p>
     </div>
+    <div class="pagination">
+      <nav aria-label="..." class="pagination">
+          <ul class="pagination">
+              {% if db.has_previous %}
+                  <li class="page-item">
+                      <a class="page-link" href="?page={{db.previous_page_number}}" tabindex="-1" aria-disabled="true" id="anterior">Anterior</a>
+                  </li>
+              {% else %}
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+                  </li>
+              {% endif%}
+
+              {% for num in db.paginator.page_range %}
+                  {% if num == db.number %}
+                      <li class="page-item active">
+                          <a class="page-link" href="#">{{ num }}</a>
+                      </li>
+                  {% else %}   
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{num}}" id="num">{{ num }}</a>
+                      </li> 
+                  {% endif %}
+              {% endfor %}
+              {% if db.has_next %}
+                  <li class="page-item">
+                      <a class="page-link" href="?page={{db.next_page_number}}" id="proximo">Próximo</a>
+                  </li>
+              {% else %}
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#">Próximo</a>
+                  </li>    
+              {% endif %}    
+          </ul>
+      </nav>
+  </div>    
 {% endblock %}
