@@ -3,10 +3,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from produto.forms import produtoForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
+@login_required()
 def home(request):
     data = {}
     filter = request.GET.get('filter')
@@ -82,6 +84,7 @@ def home(request):
     return render(request, 'produtos/index.html', data)
 
 
+@login_required()
 def form(request):
     data = {}
     data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
@@ -89,6 +92,8 @@ def form(request):
     data['form'] = produtoForm()
     return render(request, 'produtos/form.html', data)
 
+
+@login_required()
 def create(request):
     form = produtoForm(request.POST or None)
     if form.is_valid():
@@ -96,6 +101,7 @@ def create(request):
         return redirect("home")
 
 
+@login_required()
 def edit(request, pk):
     data = {}
     data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
@@ -104,6 +110,8 @@ def edit(request, pk):
     data['form'] = produtoForm(instance=data['db'])
     return render(request, 'produtos/form.html', data)
 
+
+@login_required()
 def update(request, pk):
     data = {}
     data['db'] = produto.objects.get(pk=pk)
@@ -113,12 +121,14 @@ def update(request, pk):
         return redirect('home') 
 
 
+@login_required()
 def delete(request, pk):
     db = produto.objects.get(pk=pk)
     db.delete()
     return redirect('home')
 
 
+@login_required()
 def view(request, pk):
     data = {}
     data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
@@ -127,6 +137,7 @@ def view(request, pk):
     return render(request, 'produtos/view.html', data)
 
 
+@login_required()
 def table(request):
     data = {}
     data['rc'] = produto.objects.all().order_by('-criado_em')[:5]

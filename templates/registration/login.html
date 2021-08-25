@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Entrar na BlibliotecaEMG{%  endblock %}
+
+{% block content%}
+<div class="row" id="row-login" style="margin-bottom: 180px; margin-top: 180px;">
+    <div class="col-md-4 offset-md-4">
+        <div class="card auth-card">
+            <div class="card-body" id="card-body">
+                <div style="display: flex;">
+                    <img src="../../static/img/estoque.png" alt="" style="height: 100px; width: 100px;">               
+                <h4 class="card-title text-center" style="margin-top: 40px;">Entrar no Sistema</h4>
+                </div>    
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary btn-black">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -15,17 +15,20 @@ Including another URLconf
 """
 from collections import namedtuple
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from produto.views import home, form, create, edit, update, delete, view, table
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    #produtos
     path('form/', form, name='form'),
     path('create/', create, name='create'),
     path('edit/<int:pk>/', edit, name='edit'),
     path('update/<int:pk>/', update, name='update'),
     path('view/<int:pk>/', view, name='view'),
     path('delete/<int:pk>/', delete, name='delete'),
-    path('table/', table, name='table')
+    path('table/', table, name='table'),
+    #login
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
