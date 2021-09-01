@@ -16,7 +16,7 @@ Including another URLconf
 from collections import namedtuple
 from django.contrib import admin
 from django.urls import path, include
-from produto.views import home, form, create, edit, update, delete, view, table
+from produto.views import home, form, create, edit, update, delete, view, table, changeStatus
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('view/<int:pk>/', view, name='view'),
     path('delete/<int:pk>/', delete, name='delete'),
     path('table/', table, name='table'),
+    path("changestatus/<int:pk>/", changeStatus, name="change-status"),
     #login
     path("accounts/", include("django.contrib.auth.urls")),
 ]

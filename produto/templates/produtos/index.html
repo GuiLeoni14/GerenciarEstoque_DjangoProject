@@ -54,7 +54,7 @@
             <tbody>
 {% if db %}    
             {% for dbs in db %}
-              <tr id="items">
+              <tr id="items" {% if dbs.estado == 'Vendido'%} class="vendido" {% endif %}>
                 <th>{{dbs.id}}</th>
                 <td>{{dbs.nome}}</td>
                 <td>{{dbs.tipo}}</td>
@@ -64,6 +64,7 @@
                     <a href="/view/{{dbs.id}}/" class="btn btn-dark" >Visualizar</a>
                     <a href="/edit/{{dbs.id}}/" class="btn btn-primary" >Editar</a>
                     <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                    <a href="/changestatus/{{dbs.id}}/"><i class="fas fa-money-bill-wave" id="fa-coins"></i></a>
                 </td>
               </tr>
             {% endfor %}
@@ -125,6 +126,7 @@
                     <a href="/view/{{dbs.id}}/" class="btn btn-dark" >Visualizar</a>
                     <a href="/edit/{{dbs.id}}/" class="btn btn-primary" >Editar</a>
                     <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                    <a href="/changestatus/{{dbs.id}}/"><i class="fas fa-money-bill-wave" id="fa-coins"></i></a>
                 </td>
               </tr>
             {% endfor %}

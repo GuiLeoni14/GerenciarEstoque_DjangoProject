@@ -97,6 +97,8 @@ def form(request):
 def create(request):
     form = produtoForm(request.POST or None)
     if form.is_valid():
+        form = form.save(commit=False)
+        form.estado = 'Disponível'
         form.save()
         return redirect("home")
 
@@ -140,11 +142,45 @@ def view(request, pk):
 @login_required()
 def table(request):
     data = {}
-    data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
-    data['re'] = produto.objects.all().order_by('-editado_em')[:5]    
-    data['db'] = produto.objects.all()
-    paginator = Paginator(data['db'], 20)
-    page = request.GET.get('page')
-    data['db'] = paginator.get_page(page)    
+    tipo_produto = request.GET.get("tipo_produto")
+    if tipo_produto:
+        if tipo_produto == 'Alimentício':
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
+            print(tipo_produto)
+            data['db'] = produto.objects.filter(tipo__icontains=tipo_produto).order_by('-data' , '-criado_em')
+        
+        elif tipo_produto == 'Cosmético':
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
+            print(tipo_produto)
+            data['db'] = produto.objects.filter(tipo__icontains=tipo_produto).order_by('-data' , '-criado_em')
+        
+        elif tipo_produto == 'Industrial':
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
+            print(tipo_produto)
+            data['db'] = produto.objects.filter(tipo__icontains=tipo_produto).order_by('-data' , '-criado_em')
+        
+        else:
+            data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+            data['re'] = produto.objects.all().order_by('-editado_em')[:5]
+            data['db'] = produto.objects.all().order_by('-data' , '-criado_em')
+    else:        
+        data['rc'] = produto.objects.all().order_by('-criado_em')[:5]
+        data['re'] = produto.objects.all().order_by('-editado_em')[:5]    
+        data['db'] = produto.objects.all()  
     return render(request, 'produtos/table.html', data)
-   
+
+
+@login_required
+def changeStatus(request, pk):
+    data = {}
+    data["db"] = produto.objects.get(pk=pk)
+
+    if(data['db'].estado == 'Disponível'):
+        data['db'].estado = 'Vendido'
+    else:
+        data['db'].estado = 'Disponível'
+    data['db'].save()
+    return redirect("home")

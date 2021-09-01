@@ -20,6 +20,9 @@ $(document).ready(function(){
     var baseUrl = window.location.origin + '/';
     var filter = $('#filter');
     var filterAlf = $('#filterAlf');
+    var baseUrl_tipo_produto = window.location.origin + '/table';
+    var tipo_produto = $('#tipo_produto');
+
 
     $(filter).change(function() {
        var filter = $(this).val();
@@ -32,4 +35,11 @@ $(document).ready(function(){
        console.log(filterAlf)
        window.location.href = baseUrl + '?filterAlf=' + filterAlf;
     });
+
+    $(tipo_produto).change(function() {
+        var tipo_produto = $(this).val();
+        console.log(tipo_produto)
+        window.location.href = baseUrl_tipo_produto + '?tipo_produto=' + tipo_produto;
+     });
+
 });

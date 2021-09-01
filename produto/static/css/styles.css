@@ -82,6 +82,22 @@
     color: #0D0D0D;
     font-size: 17px;
   }
+
+  .vendido{
+      background-image:url(../img/background.jpg);
+  }
+
+  #fa-coins {
+    color: #737272;
+    margin-top: 6px;
+    margin-left: 8px;
+    font-size: 30px;
+  }
+
+  .vendido #fa-coins {
+    color: #077c07;
+  }
+
 /* FORM */
 
   #form{
@@ -362,34 +378,34 @@
 
 /* TABELA VIEW */
 
-  #dados table,
-  #dados th,
-  #dados td{
+  .dado table,
+  .dado th,
+  .dado td{
     border: 1px solid black;
     border-collapse: collapse; 
   }
 
-  #dados th,
-  #dados td{
+  .dado th,
+  .dado td{
     padding: 5px;
     text-align: center;   
   }
-  #dados table{
+  .dado table{
     box-shadow: 0 10px 20px 10px;
     transform: scale(1);
     background-color: #F2F2F2;
   }
-  #dados td{
+  .dado td{
     height: 70px;
     width: 1000px;
     font-size: 20px;
   }
-  #dados th{
+  .dado th{
       width: 300px;
       font-size: 20px;
       background-color: #B8BABF;
   }
-  #dados caption{
+  .dado caption{
     caption-side: top;
     font-size: 40px;
     color: #000;

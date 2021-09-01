@@ -6,7 +6,7 @@
     <div class="col-8 m-auto mt-5 pt-1 pb-1 text-center">
         <h1>Visualização do {{db.nome}}</h1>
     </div>
-    <div class="col-8 m-auto text-center" id="dados">
+    <div class="col-8 m-auto text-center dado" id="dados">
         <table>
           <caption class="text-center">Tabela</caption>
           <tr>
@@ -32,6 +32,10 @@
           <tr>
             <th>Tipo do Produto</th>
             <td>{{db.tipo}}</td>
+          </tr>
+          <tr>
+            <th>Estado</th>
+            <td>{{db.estado}}</td>
           </tr>
           <tr>
             <th>Data de Aquisição</th>
